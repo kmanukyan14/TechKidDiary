@@ -26,8 +26,8 @@ void dot(){
 
 void joystick(){ //new
   int x = analogRead(A0);
-  if(x<100){Serial.println("left")}
-  if(x>900){Serial.println("right")}
+  if(x<100){Serial.println("left");}
+  if(x>900){Serial.println("right");}
 }
 
 void loop(){
