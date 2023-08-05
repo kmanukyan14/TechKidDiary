@@ -19,17 +19,5 @@ void loop(){
   Wire.requestFrom(MPU_addr,14,true); 
   AcX=Wire.read()<<8|Wire.read();     
   AcY=Wire.read()<<8|Wire.read();  
-  Serial.print("X tilt: ");
-  Serial.println(AcX);
-  Serial.print("Y tilt: ");
-  Serial.println(AcY);
-  digitalWrite(4,LOW);
-  if(AcX<-2000){digitalWrite(4,HIGH);}
-  digitalWrite(6,LOW);
-  if(AcX>2000){digitalWrite(6,HIGH);}
-  digitalWrite(7,LOW);
-  if(AcY<-2000){digitalWrite(7,HIGH);}
-  digitalWrite(5,LOW);
-  if(AcY>2000){digitalWrite(5,HIGH);}
   delay(1000);
 }
