@@ -1,23 +1,19 @@
-int LEDs[3] = {24,25,52};
+#include "LedControl.h"
+LedControl lc=LedControl(12,10,11,1);
 void setup() {
-for(int i=0; i<sizeof(LEDs); i++) pinMode(LEDs[i],OUTPUT);
+  lc.shutdown(0,false);
+  lc.setIntensity(0,8);
+  lc.clearDisplay(0);
 }
-void on(){for(int i=0; i<sizeof(LEDs); i++) digitalWrite(LEDs[i],HIGH);}
-void off(){for(int i=0; i<sizeof(LEDs); i++) digitalWrite(LEDs[i],LOW);}
+int rows[7] =    {3,1,1,3,1,2,2}; //new
+int columns[7] = {0,5,3,1,7,2,3}; //changed
 void sequence(){
-  for(int i=0; i<sizeof(LEDs); i++){ 
-    digitalWrite(LEDs[i],HIGH);
+  for(int p=0; p<sizeof(columns); p++){ 
+    lc.setLed(0,rows[p],columns[p],true); //changed
     delay(500);
-    digitalWrite(LEDs[i],LOW);
+    lc.setLed(0,rows[p],columns[p],false); //changed
   }
-}
-void flash(){
-  on();
-  delay(500);
-  off();
-  delay(500);
-}
-void loop() {
-  flash();
+  }
+void loop(){
   sequence();
 }
